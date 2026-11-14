@@ -1,0 +1,170 @@
+/*
+ * REGISTRO MENTAL — RECORD CARD DESIGN SYSTEM V1
+ *
+ * Único componente visual para:
+ *   #historyList  — Histórico completo
+ *   #homeTimeline — Registros recentes
+ *
+ * Alterar os tokens abaixo modifica os dois locais.
+ * Não afeta cartões de outras seções.
+ */
+
+:root {
+  /* Dimensões */
+  --rm-record-width: 100%;
+  --rm-record-min-height: 0px;
+  --rm-record-radius: 22px;
+
+  /* Espaçamento */
+  --rm-record-pad-top: 11px;
+  --rm-record-pad-side: 12px;
+  --rm-record-pad-bottom: 12px;
+  --rm-record-header-gap: 6px;
+  --rm-record-heading-gap: 8px;
+  --rm-record-note-heading-gap: 5px;
+  --rm-record-content-inset: 0px;
+  --rm-record-note-content-inset: 8px;
+  --rm-record-meta-gap: 5px;
+
+  /* Ícones */
+  --rm-record-icon-size: 24px;
+  --rm-record-icon-svg-size: 21px;
+
+  /* Tipografia */
+  --rm-record-type-font: 15.5px;
+  --rm-record-type-weight: 800;
+  --rm-record-time-font: 14.5px;
+  --rm-record-time-weight: 760;
+  --rm-record-title-font: 14.75px;
+  --rm-record-title-weight: 560;
+  --rm-record-meta-font: 11.75px;
+
+  /* Aparência */
+  --rm-record-border-color: var(--rm-line, var(--separator));
+  --rm-record-shadow: var(--rm-inner, none);
+
+  /* Cores oficiais por categoria */
+  --rm-record-note-color: var(--record-note, #0188FE);
+  --rm-record-med-color: var(--record-med, #00C0E7);
+  --rm-record-sleep-color: var(--record-sleep, #6155F4);
+  --rm-record-buy-color: var(--record-buy, #FF4900);
+}
+
+/* Uma família, um seletor, dois locais. */
+html body :is(#historyList,#homeTimeline)
+> article.timeline-item.rm-v28-timeline {
+  display: block !important;
+  position: relative !important;
+  box-sizing: border-box !important;
+  width: var(--rm-record-width) !important;
+  max-width: 100% !important;
+  min-height: var(--rm-record-min-height) !important;
+  height: auto !important;
+  padding:
+    var(--rm-record-pad-top)
+    var(--rm-record-pad-side)
+    var(--rm-record-pad-bottom) !important;
+  border-radius: var(--rm-record-radius) !important;
+  border: 1px solid var(--rm-record-border-color) !important;
+  box-shadow: var(--rm-record-shadow) !important;
+  -webkit-box-shadow: var(--rm-record-shadow) !important;
+}
+
+/* Mesma organização do cabeçalho. */
+html body :is(#historyList,#homeTimeline)
+> .rm-v28-timeline .rm-card-header {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 10px !important;
+  margin-bottom: var(--rm-record-header-gap) !important;
+}
+
+html body :is(#historyList,#homeTimeline)
+> .rm-v28-timeline .rm-card-header-main {
+  display: flex !important;
+  align-items: center !important;
+  gap: var(--rm-record-heading-gap) !important;
+  min-width: 0 !important;
+}
+
+/* Ícones com dimensões compartilhadas. */
+html body :is(#historyList,#homeTimeline)
+> .rm-v28-timeline .timeline-type-icon {
+  width: var(--rm-record-icon-size) !important;
+  height: var(--rm-record-icon-size) !important;
+  flex: 0 0 var(--rm-record-icon-size) !important;
+  display: grid !important;
+  place-items: center !important;
+}
+
+html body :is(#historyList,#homeTimeline)
+> .rm-v28-timeline .timeline-type-icon svg {
+  width: var(--rm-record-icon-svg-size) !important;
+  height: var(--rm-record-icon-svg-size) !important;
+}
+
+/* Texto e hierarquia. */
+html body :is(#historyList,#homeTimeline)
+> .rm-v28-timeline .timeline-kind {
+  font-size: var(--rm-record-type-font) !important;
+  font-weight: var(--rm-record-type-weight) !important;
+}
+
+html body :is(#historyList,#homeTimeline)
+> .rm-v28-timeline .timeline-time {
+  font-size: var(--rm-record-time-font) !important;
+  font-weight: var(--rm-record-time-weight) !important;
+}
+
+html body :is(#historyList,#homeTimeline)
+> .rm-v28-timeline .timeline-title {
+  font-size: var(--rm-record-title-font) !important;
+  font-weight: var(--rm-record-title-weight) !important;
+}
+
+html body :is(#historyList,#homeTimeline)
+> .rm-v28-timeline .timeline-meta {
+  font-size: var(--rm-record-meta-font) !important;
+  margin-top: var(--rm-record-meta-gap) !important;
+}
+
+html body :is(#historyList,#homeTimeline)
+> .rm-v28-timeline .timeline-main {
+  min-width: 0 !important;
+  padding-left: var(--rm-record-content-inset) !important;
+}
+
+/* Variações próprias de anotações valem nos dois locais. */
+html body :is(#historyList,#homeTimeline)
+> .rm-v28-timeline.rm-type-note .rm-card-header-main {
+  gap: var(--rm-record-note-heading-gap) !important;
+}
+
+html body :is(#historyList,#homeTimeline)
+> .rm-v28-timeline.rm-type-note .timeline-main {
+  padding-left: var(--rm-record-note-content-inset) !important;
+}
+
+/* Cores oficiais iguais em Histórico e Recentes. */
+html body :is(#historyList,#homeTimeline)
+> .rm-v28-timeline.rm-type-note {
+  --rm-record-tone: var(--rm-record-note-color);
+}
+
+html body :is(#historyList,#homeTimeline)
+> .rm-v28-timeline.rm-type-medication {
+  --rm-record-tone: var(--rm-record-med-color);
+}
+
+html body :is(#historyList,#homeTimeline)
+> .rm-v28-timeline.rm-type-sleep {
+  --rm-record-tone: var(--rm-record-sleep-color);
+}
+
+html body :is(#historyList,#homeTimeline)
+> .rm-v28-timeline.rm-type-purchase {
+  --rm-record-tone: var(--rm-record-buy-color);
+}
+
+/* Filhos mantêm seus próprios glows e efeitos internos. */

@@ -122,7 +122,7 @@
       }
       #historyFilters .filter-chip{position:relative!important}
 
-      #homeTimeline .timeline-item{grid-template-columns:68px minmax(0,1fr) 28px}
+
       #homeTimeline .rm-home-recent-day{display:block;color:var(--secondary);font-size:10px;font-weight:750;line-height:1.15;white-space:nowrap}
       #homeTimeline .rm-home-recent-hour{display:block;margin-top:3px;color:var(--secondary);font-size:11px;line-height:1.15;font-variant-numeric:tabular-nums}
 
