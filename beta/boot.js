@@ -411,6 +411,11 @@
       boot.classList.add('rm-boot-hide');
     }
     startVisualWatchdog();
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('./sw.js', {
+        scope:'./', updateViaCache:'none'
+      }).catch(console.error);
+    }
   }
 
   function runVisualWatchdog() {
@@ -516,7 +521,8 @@
 
     currentStage = 'ambiente';
     const storagePromise = checkStorage();
-    const cleanupPromise = clearObsoleteRuntime();
+    setStep('cache', 'ok', 'preservado');
+    const cleanupPromise = Promise.resolve({clean:true});
     let runtime;
     try {
       runtime = await withTimeout(cleanupPromise, 1800, 'Limpeza do ambiente web');

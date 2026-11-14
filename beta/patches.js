@@ -91,16 +91,8 @@
         const probe = await fetch(`./release-guard.js?verificar=${Date.now()}`, { cache: 'no-store' });
         if (!probe.ok) throw new Error('A publicação não respondeu.');
         if ('serviceWorker' in navigator) {
-          const regs = await navigator.serviceWorker.getRegistrations();
-          await Promise.allSettled(regs
-            .filter(reg => String(reg.scope || '').includes('/Registro-mental/beta/'))
-            .map(reg => reg.unregister()));
-        }
-        if ('caches' in window) {
-          const keys = await caches.keys();
-          await Promise.allSettled(keys
-            .filter(key => key.startsWith('registro-beta-v1-'))
-            .map(key => caches.delete(key)));
+          const reg = await navigator.serviceWorker.getRegistration('./');
+          if (reg) await reg.update();
         }
         button.textContent = 'Atualizando…';
         location.replace(`./launch.html?force=${Date.now()}&from=${encodeURIComponent(RELEASE)}`);

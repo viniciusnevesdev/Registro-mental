@@ -52,7 +52,7 @@
     }catch(_){}
   }
   (async()=>{
-    await clean();
+    // Preservar cache offline.
     status.textContent='Abrindo a interface…';
     const url=`./?v=${encodeURIComponent(RELEASE)}&launch=${Date.now()}`;
     setTimeout(()=>location.replace(url),90);
