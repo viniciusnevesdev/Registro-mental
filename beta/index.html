@@ -12,11 +12,25 @@
   <meta name="apple-mobile-web-app-title" content="Registro Beta">
   <title>Registro Beta</title>
   <link rel="manifest" href="./manifest.webmanifest?v=1.2.0-beta.51">
+<script id="rmEarlyTheme">
+(()=>{try{
+const s=JSON.parse(localStorage.getItem('registro-beta-settings-v1')||'{}');
+const h=document.documentElement;
+h.dataset.theme=['dark','light','system'].includes(s.theme)?s.theme:'dark';
+h.dataset.accent=s.accent||'violet';
+h.dataset.visualMode=s.visualMode==='ultra'?'ultra':'optimized';
+h.dataset.iconSize=s.iconSize||'medium';
+h.dataset.iconWeight=s.iconWeight||'regular';
+h.dataset.hideTabLabels=String(Boolean(s.hideTabLabels));
+h.style.setProperty('--base-font-weight',String(s.fontWeight||'600'));
+}catch(_){document.documentElement.dataset.theme='dark';}})();
+</script>
   <link rel="stylesheet" href="./styles.css?v=1.2.0-beta.51">
 
 <style id="rmBootCriticalStyle">
-  html,body{margin:0;min-height:100%;background:#f5f5f7}
+  html,body{margin:0;min-height:100%;background:var(--bg,#000)}
   body.rm-booting{overflow:auto}
+  body.rm-booting:not(.rm-boot-failed) .app-shell{clip-path:inset(0 0 100% 0);pointer-events:none}
   /* Carregamento sem sobreposição; erro abre diagnóstico automaticamente. */
   body.rm-booting:not(.rm-boot-failed) #rmBoot{opacity:0!important;visibility:hidden!important;pointer-events:none!important}
   body.rm-boot-failed #rmBoot{opacity:1!important;visibility:visible!important;pointer-events:auto!important}
@@ -32,7 +46,7 @@
   .rm-boot-actions{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:18px}.rm-boot-actions button{appearance:none;border:0;border-radius:13px;padding:12px 10px;background:#ededf2;color:#17171a;font:600 13px/1.2 inherit}.rm-boot-actions button:first-child{background:#111114;color:#fff}.rm-boot-actions button:last-child{grid-column:1/-1}
   .rm-boot-diagnostics{margin:14px 0 0;padding:11px;border-radius:12px;background:#f5f5f7;max-height:180px;overflow:auto;white-space:pre-wrap;word-break:break-word;font:10px/1.45 ui-monospace,SFMono-Regular,Menlo,monospace;color:#66666b}
   body.rm-boot-failed #rmBoot{overflow:auto}.rm-boot-fallback{display:none;margin-top:14px;font-size:12px;line-height:1.45;color:#8e8e93}
-  @media(prefers-color-scheme:dark){html,body,#rmBoot{background:#111114;color:#f7f7f8}.rm-boot-card{background:#1c1c1e;box-shadow:none}.rm-boot-mark{background:#28213d;color:#b7a6ff}.rm-boot-copy p,.rm-boot-step,.rm-boot-fallback{color:#a1a1a6}.rm-boot-step strong{color:#f2f2f4}.rm-boot-bar{background:#2c2c2e}.rm-boot-actions button{background:#2c2c2e;color:#f7f7f8}.rm-boot-actions button:first-child{background:#f2f2f4;color:#111114}.rm-boot-diagnostics{background:#111114;color:#b9b9be}}
+  @media(prefers-color-scheme:dark){html,body,#rmBoot{background:var(--bg,#000);color:#f7f7f8}.rm-boot-card{background:#1c1c1e;box-shadow:none}.rm-boot-mark{background:#28213d;color:#b7a6ff}.rm-boot-copy p,.rm-boot-step,.rm-boot-fallback{color:#a1a1a6}.rm-boot-step strong{color:#f2f2f4}.rm-boot-bar{background:#2c2c2e}.rm-boot-actions button{background:#2c2c2e;color:#f7f7f8}.rm-boot-actions button:first-child{background:#f2f2f4;color:#111114}.rm-boot-diagnostics{background:#111114;color:#b9b9be}}
 </style>
 
 
