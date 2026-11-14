@@ -113,18 +113,23 @@ html[data-visual-mode="ultra"] .rm-note-form .rm-expand-card{box-shadow:0 0 11px
 .rm-note-detail-view.rm-note-detail-score-only{gap:9px;justify-items:center;padding:4px 2px 0}.rm-note-detail-score{display:inline-grid;place-items:center;width:var(--rm-note-detail-width);min-width:36px;height:30px;padding:0 10px;box-sizing:border-box;border:1px solid color-mix(in srgb,var(--rm-note-detail-mood) 58%,var(--separator));border-radius:999px;background:linear-gradient(180deg,rgba(255,255,255,.2),transparent 62%),var(--rm-note-detail-mood);color:rgba(0,0,0,.48);font-size:14px;font-weight:850;line-height:1;box-shadow:0 1px 0 rgba(255,255,255,.24) inset}.rm-note-detail-score span{font-variant-numeric:tabular-nums}.rm-note-detail-score-only .rm-note-view-date{width:100%;padding:2px 0 0;text-align:center;font-size:13px}.rm-note-detail-score-only .rm-v28-detail-grid:not(:empty){width:100%;margin-top:2px}html[data-visual-mode="ultra"] .rm-note-detail-score{box-shadow:0 0 10px color-mix(in srgb,var(--rm-note-detail-mood) 55%,transparent),0 1px 0 rgba(255,255,255,.24) inset}
 
 
-/* RM_HISTORY_NO_GLOW_V1 */
-/* Cartões do Histórico sem glow, em todos os temas. */
+/* RM_REGISTROS_SEM_SOMBRA_EXTERNA_V1 */
+
+/*
+  Somente cartões de registros:
+  - Histórico completo
+  - Registros recentes da página inicial
+
+  Preserva sombras internas através de --rm-inner.
+  Não modifica filhos, ícones, filtros ou bordas.
+*/
+
 html body #historyList .timeline-item,
+html body #homeTimeline .timeline-item,
 html body #historyList .timeline-item:hover,
-html body #historyList .timeline-item:focus-visible {
-  box-shadow: none !important;
-  -webkit-box-shadow: none !important;
-  filter: none !important;
-  -webkit-filter: none !important;
-}
-html body #historyList .timeline-item::before,
-html body #historyList .timeline-item::after {
-  box-shadow: none !important;
-  filter: none !important;
+html body #homeTimeline .timeline-item:hover,
+html body #historyList .timeline-item:focus-visible,
+html body #homeTimeline .timeline-item:focus-visible {
+  box-shadow: var(--rm-inner, none) !important;
+  -webkit-box-shadow: var(--rm-inner, none) !important;
 }
