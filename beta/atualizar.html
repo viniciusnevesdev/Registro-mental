@@ -1,3 +1,216 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"><meta name="theme-color" content="#000000"><title>Mente Beta — atualizar</title><style>html,body{margin:0;min-height:100%;background:#000;color:#f5f5f7;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",sans-serif}body{min-height:100dvh;display:grid;place-items:center;padding:24px;box-sizing:border-box}main{width:min(100%,360px);text-align:center}.mark{font-size:28px;color:#c9bfff}.status{color:#aeaeb2;font-size:14px;line-height:1.45}</style></head><body><main><div class="mark">✦</div><h1>Atualizando Beta</h1><p class="status" id="status">Limpando a versão anterior…</p></main><script>
-    location.replace('./?v=1.2.0-beta.51');
-    </script></body></html>
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#f5f5f7">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Registro Beta">
+  <title>Registro Beta</title>
+  <link rel="manifest" href="./manifest.webmanifest?v=1.2.0-beta.51">
+  <link rel="stylesheet" href="./styles.css?v=1.2.0-beta.51">
+
+<style id="rmBootCriticalStyle">
+  html,body{margin:0;min-height:100%;background:#f5f5f7}
+  body.rm-booting{overflow:auto}
+  /* Carregamento sem sobreposição; erro abre diagnóstico automaticamente. */
+  body.rm-booting:not(.rm-boot-failed) #rmBoot{opacity:0!important;visibility:hidden!important;pointer-events:none!important}
+  body.rm-boot-failed #rmBoot{opacity:1!important;visibility:visible!important;pointer-events:auto!important}
+  #rmBoot{position:fixed;inset:0;z-index:2147483000;display:grid;place-items:center;padding:22px;background:#f5f5f7;color:#111114;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",sans-serif;box-sizing:border-box;transition:opacity .22s ease,visibility .22s ease}
+  #rmBoot.rm-boot-hide{opacity:0;visibility:hidden;pointer-events:none}
+  #rmBootActions[hidden],#rmBootDiagnostics[hidden]{display:none!important}
+  .rm-boot-card{width:min(100%,390px);background:#fff;border-radius:24px;padding:22px;box-sizing:border-box;box-shadow:0 12px 38px rgba(0,0,0,.07)}
+  .rm-boot-top{display:flex;align-items:center;gap:13px;margin-bottom:16px}.rm-boot-mark{width:48px;height:48px;border-radius:15px;background:#f0ecff;color:#6f4cff;display:grid;place-items:center;font-size:25px;font-weight:700;flex:none}
+  .rm-boot-copy h1{font-size:22px;line-height:1.15;margin:0 0 4px}.rm-boot-copy p{font-size:13px;line-height:1.4;color:#77777c;margin:0}
+  .rm-boot-bar{height:6px;background:#ececf0;border-radius:999px;overflow:hidden;margin:16px 0 18px}.rm-boot-bar span{display:block;height:100%;width:8%;background:#7d5cff;border-radius:inherit;transition:width .22s ease}
+  .rm-boot-steps{display:grid;gap:9px}.rm-boot-step{display:flex;align-items:center;gap:9px;font-size:13px;line-height:1.25;color:#55555b}.rm-boot-step::before{content:"";width:8px;height:8px;border-radius:50%;background:#d2d2d7;flex:none}.rm-boot-step strong{font-weight:600;color:#242428}.rm-boot-step [data-boot-value]{margin-left:auto;color:#8e8e93;font-size:12px}
+  .rm-boot-step[data-state="active"]::before{background:#7d5cff;box-shadow:0 0 0 4px rgba(125,92,255,.12)}.rm-boot-step[data-state="ok"]::before{background:#34c759}.rm-boot-step[data-state="warn"]::before{background:#ff9f0a}.rm-boot-step[data-state="error"]::before{background:#ff3b30}
+  .rm-boot-actions{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:18px}.rm-boot-actions button{appearance:none;border:0;border-radius:13px;padding:12px 10px;background:#ededf2;color:#17171a;font:600 13px/1.2 inherit}.rm-boot-actions button:first-child{background:#111114;color:#fff}.rm-boot-actions button:last-child{grid-column:1/-1}
+  .rm-boot-diagnostics{margin:14px 0 0;padding:11px;border-radius:12px;background:#f5f5f7;max-height:180px;overflow:auto;white-space:pre-wrap;word-break:break-word;font:10px/1.45 ui-monospace,SFMono-Regular,Menlo,monospace;color:#66666b}
+  body.rm-boot-failed #rmBoot{overflow:auto}.rm-boot-fallback{display:none;margin-top:14px;font-size:12px;line-height:1.45;color:#8e8e93}
+  @media(prefers-color-scheme:dark){html,body,#rmBoot{background:#111114;color:#f7f7f8}.rm-boot-card{background:#1c1c1e;box-shadow:none}.rm-boot-mark{background:#28213d;color:#b7a6ff}.rm-boot-copy p,.rm-boot-step,.rm-boot-fallback{color:#a1a1a6}.rm-boot-step strong{color:#f2f2f4}.rm-boot-bar{background:#2c2c2e}.rm-boot-actions button{background:#2c2c2e;color:#f7f7f8}.rm-boot-actions button:first-child{background:#f2f2f4;color:#111114}.rm-boot-diagnostics{background:#111114;color:#b9b9be}}
+</style>
+
+
+<style id="rmStableReleaseStamp">
+  #topVersion{font-size:0!important}
+  #topVersion::after{content:"v1.2.0-beta.51";font-size:10px!important}
+  #versionLabel{font-size:0!important}
+  #versionLabel::after{content:"1.2.0-beta.51";font-size:14px!important}
+</style>
+
+  <!-- rm-environment-icon -->
+  <link rel="icon" href="./icon-beta.jpeg?v=20260915-2" type="image/jpeg">
+  <link rel="apple-touch-icon" href="./icon-beta.jpeg?v=20260915-2">
+</head>
+<body class="rm-booting">
+
+<div id="rmBoot" role="status" aria-live="polite">
+  <section class="rm-boot-card" aria-labelledby="rmBootHeadline">
+    <div class="rm-boot-top">
+      <div class="rm-boot-mark" aria-hidden="true">✦</div>
+      <div class="rm-boot-copy"><h1 id="rmBootHeadline">Abrindo o Registro</h1><p id="rmBootDetail">Preparando a interface…</p></div>
+    </div>
+    <div class="rm-boot-bar" aria-hidden="true"><span id="rmBootProgress"></span></div>
+    <div class="rm-boot-steps">
+      <div class="rm-boot-step" data-boot-step="shell"><strong>Tela inicial</strong><span data-boot-value>aguardando</span></div>
+      <div class="rm-boot-step" data-boot-step="cache"><strong>Ambiente web</strong><span data-boot-value>verificando</span></div>
+      <div class="rm-boot-step" data-boot-step="storage"><strong>Dados locais</strong><span data-boot-value>verificando</span></div>
+      <div class="rm-boot-step" data-boot-step="engine"><strong>Motor do app</strong><span data-boot-value>aguardando</span></div>
+      <div class="rm-boot-step" data-boot-step="patches"><strong>Correções finais</strong><span data-boot-value>aguardando</span></div>
+      <div class="rm-boot-step" data-boot-step="ready"><strong>Interface funcional</strong><span data-boot-value>aguardando</span></div>
+    </div>
+    <div class="rm-boot-actions" id="rmBootActions" hidden>
+      <button type="button" id="rmBootRetry">Tentar novamente</button>
+      <button type="button" id="rmBootRecover">Recuperar interface</button>
+      <button type="button" id="rmBootSafe">Abrir modo seguro</button>
+      <button type="button" id="rmBootCopy">Copiar diagnóstico</button>
+    </div>
+    <pre class="rm-boot-diagnostics" id="rmBootDiagnostics" hidden></pre>
+    <p class="rm-boot-fallback" id="rmBootFallback">Se esta tela ficar parada por muito tempo, abra recover.html. Seus registros locais não são apagados por esta inicialização.</p>
+  </section>
+</div>
+
+  <div class="app-shell">
+    <main class="content" id="content">
+      <section class="view active" data-view="home">
+        <header class="page-header home-header">
+          <div>
+            <p class="eyebrow"><span id="dateLabel">Hoje</span><span class="version-inline" id="topVersion">v1.2.0-beta.51</span></p>
+            <h1>Registro</h1>
+          </div>
+          <button class="round-button" id="homeOptionsBtn" aria-label="Abrir ajustes">•••</button>
+        </header>
+
+        <section class="summary-card compact-summary" aria-labelledby="summaryTitle">
+          <div class="card-heading-row compact-heading"><div><p class="section-kicker">HOJE</p><h2 id="summaryTitle">Resumo do dia</h2></div></div>
+          <div class="summary-list compact-summary-list" id="summaryList"></div>
+        </section>
+
+        <section class="action-section" aria-labelledby="quickActionsTitle">
+          <div class="section-title-row"><h2 id="quickActionsTitle">Adicionar</h2></div>
+          <div class="action-grid">
+            <button class="action-card primary-action" data-type="note"><span class="action-icon" data-icon="note"></span><span class="action-copy"><strong>Anotação</strong><small>Texto e estado emocional</small></span><span class="action-plus">+</span></button>
+            <button class="action-card compact-action med-action" data-type="medication"><span class="action-icon" data-icon="pill"></span><strong>Medicamento</strong></button>
+            <button class="action-card compact-action sleep-action" data-type="sleep"><span class="action-icon" data-icon="moon"></span><strong>Sono</strong></button>
+            <button class="action-card compact-action buy-action" data-type="purchase"><span class="action-icon" data-icon="bag"></span><strong>Compra</strong></button>
+          </div>
+        </section>
+
+        <section class="recent-section" aria-labelledby="recentTitle">
+          <div class="section-divider"></div>
+          <div class="section-title-row"><div><p class="section-kicker">REGISTROS</p><h2 id="recentTitle">Mais recentes</h2></div><button class="link-button" data-go="history">Ver todos</button></div>
+          <div class="timeline" id="homeTimeline"></div>
+          <div class="empty-state hidden" id="homeEmpty">Nenhum registro neste dia.</div>
+        </section>
+      </section>
+
+      <section class="view" data-view="history">
+        <header class="page-header"><div><p class="eyebrow">Todos os registros</p><h1>Histórico</h1></div></header>
+        <div class="filter-scroll" id="historyFilters"><button class="filter-chip selected" data-filter="all">Tudo</button><button class="filter-chip" data-filter="note">Anotações</button><button class="filter-chip" data-filter="medication">Medicamentos</button><button class="filter-chip" data-filter="sleep">Sono</button><button class="filter-chip" data-filter="purchase">Compras</button></div>
+        <div class="history-list" id="historyList"></div>
+        <div class="empty-state hidden" id="historyEmpty">Nenhum registro para este filtro.</div>
+      </section>
+
+      <section class="view" data-view="analysis">
+        <header class="page-header"><div><p class="eyebrow">Leitura dos seus registros</p><h1>Análises</h1></div></header>
+        <div class="notice-card"><span class="notice-icon" data-icon="spark"></span><div><strong>Análise baseada nos registros</strong><p>O app cruza horários, repetição e proximidade temporal. Ele não afirma causalidade nem substitui interpretação clínica.</p></div></div>
+        <section class="analysis-card prominent-analysis"><p class="section-kicker">AGORA</p><h2>Análise atual</h2><div id="currentAnalysis" class="analysis-stack"></div></section>
+        <section class="analysis-card"><div class="analysis-title"><span data-icon="moon"></span><h2>Sono</h2></div><div id="sleepAnalysis" class="metric-grid"></div></section>
+        <section class="analysis-card"><div class="analysis-title"><span data-icon="link"></span><h2>Associações temporais</h2></div><div id="associationAnalysis" class="analysis-stack"></div></section>
+        <section class="analysis-card"><div class="analysis-title"><span data-icon="pill"></span><h2>Medicamentos</h2></div><div id="medicationAnalysis" class="analysis-stack"></div></section>
+        <section class="analysis-card"><div class="analysis-title"><span data-icon="bag"></span><h2>Compras</h2></div><div id="purchaseAnalysis" class="analysis-stack"></div></section>
+      </section>
+
+      <section class="view" data-view="settings">
+        <header class="page-header"><div><p class="eyebrow">Preferências e dados</p><h1>Ajustes</h1></div></header>
+
+        <section class="settings-group"><h2>Aparência</h2><div class="settings-card">
+          <div class="setting-block"><div class="setting-label"><strong>Tema</strong><small>Claro, escuro ou seguindo o iPhone</small></div><div class="segmented animated-segmented" id="themeControl"><button data-theme-value="system">Sistema</button><button data-theme-value="light">Claro</button><button data-theme-value="dark">Escuro</button></div></div>
+          <div class="setting-separator"></div>
+          <div class="setting-block"><div class="setting-label"><strong>Tamanho dos ícones</strong><small>Ajusta os ícones principais do app</small></div><div class="segmented animated-segmented" id="iconSizeControl"><button data-icon-size="small">P</button><button data-icon-size="medium">M</button><button data-icon-size="large">G</button></div></div>
+          <div class="setting-separator"></div>
+          <div class="setting-block"><div class="setting-label"><strong>Tipografia</strong><small>Fonte padrão do iPhone ou Inter</small></div><div class="segmented animated-segmented" id="fontFamilyControl"><button data-font-family="system">Sistema</button><button data-font-family="inter">Inter</button></div></div>
+          <div class="setting-separator"></div>
+          <div class="setting-block"><div class="setting-label"><strong>Peso base da fonte</strong><small>Afeta textos comuns sem destruir a hierarquia</small></div><div class="segmented animated-segmented" id="fontWeightControl"><button data-font-weight="400">Regular</button><button data-font-weight="500">Médio</button><button data-font-weight="600">Forte</button></div></div>
+          <div class="setting-separator"></div>
+          <div class="setting-inline"><div class="setting-label no-margin"><strong>Mostrar versão no topo</strong><small>Exibe a versão atual ao lado da data</small></div><button class="switch-control" id="showVersionToggle" role="switch" aria-checked="true"><span></span></button></div>
+        </div></section>
+
+        <section class="settings-group"><h2>Medicamentos</h2><div class="settings-card list-card">
+          <button class="settings-row" id="medicationRegistryBtn"><span class="settings-row-icon" data-icon="pill"></span><span><strong>Cadastro de medicamentos</strong><small>Princípio ativo, apresentações, custos, duração e anotações</small></span><span class="chevron">›</span></button>
+        </div></section>
+
+        <section class="settings-group"><h2>Saúde e sono</h2><div class="settings-card list-card">
+          <button class="settings-row" id="healthImportInfoBtn"><span class="settings-row-icon health-icon" data-icon="heart"></span><span><strong>Apple Saúde via Atalho</strong><small id="healthStatusText">Não configurado neste aparelho</small></span><span class="chevron">›</span></button>
+          <div class="setting-separator inset"></div>
+          <div class="setting-block"><div class="setting-label"><strong>Ao receber um sono do Atalho</strong><small>Você continua podendo corrigir horários e informações</small></div><div class="segmented animated-segmented three-wide" id="healthImportModeControl"><button data-health-mode="auto">Auto</button><button data-health-mode="review">Revisar</button><button data-health-mode="ask">Perguntar</button></div></div>
+        </div></section>
+
+        <section class="settings-group"><h2>Personalização avançada</h2><div class="settings-card list-card">
+          <button class="settings-row" id="customIconsBtn"><span class="settings-row-icon" data-icon="spark"></span><span><strong>Substituir ícones</strong><small>Código do banco interno ou arquivo SVG</small></span><span class="chevron">›</span></button>
+          <div class="setting-separator inset"></div>
+          <div class="setting-inline"><div class="setting-label no-margin"><strong>Ocultar textos da barra inferior</strong><small>Os ícones ficam maiores e centralizados</small></div><button class="switch-control" id="hideTabLabelsToggle" role="switch" aria-checked="false"><span></span></button></div>
+          <div class="setting-separator"></div>
+          <button class="settings-row" id="tabbarLabBtn"><span class="settings-row-icon" data-icon="settings"></span><span><strong>Laboratório da barra inferior</strong><small>Transparência, bolha, desfoque e tema</small></span><span class="chevron">›</span></button>
+        </div></section>
+
+        <section class="settings-group"><h2>Dados</h2><div class="backup-warning hidden" id="backupWarning"><span data-icon="export"></span><div><strong>Backup desatualizado</strong><small id="backupWarningText">Crie um novo backup para manter uma cópia externa dos registros.</small></div></div><div class="settings-card list-card">
+          <button class="settings-row" id="exportBtn"><span class="settings-row-icon" data-icon="export"></span><span><strong>Exportar dados</strong><small id="backupStatusText">Backup em JSON</small></span><span class="chevron">›</span></button>
+          <div class="setting-separator inset"></div>
+          <button class="settings-row" id="importBtn"><span class="settings-row-icon" data-icon="import"></span><span><strong>Importar dados</strong><small>Escolha entre substituir ou somar ao conteúdo atual</small></span><span class="chevron">›</span></button>
+        </div><p class="group-footnote">Os registros, medicamentos, configurações e SVGs personalizados entram no backup JSON.</p></section>
+
+        <section class="settings-group"><h2>Desenvolvimento</h2><div class="settings-card list-card">
+          <button class="settings-row no-icon" id="restoreDemoBtn"><span><strong>Restaurar dados fictícios</strong><small>Substitui os registros atuais pelos exemplos</small></span><span class="chevron">›</span></button>
+          <div class="setting-separator"></div>
+          <button class="settings-row no-icon danger-row" id="clearBtn"><span><strong>Apagar todos os dados locais</strong><small>Remove registros e cadastros deste navegador</small></span><span class="chevron">›</span></button>
+        </div></section>
+
+        <section class="settings-group about-group"><h2>Sobre</h2><div class="settings-card info-card"><div><span>Versão</span><strong id="versionLabel">1.2.0-beta.51</strong></div><div><span>Armazenamento</span><strong>Local no aparelho</strong></div></div></section>
+      </section>
+    </main>
+
+    <nav class="tab-bar capsule-tabbar" aria-label="Navegação principal">
+      <span class="tab-bubble" id="tabBubble" aria-hidden="true"></span>
+      <button class="tab-item selected" data-tab="home"><span data-icon="home"></span><small>Início</small></button>
+      <button class="tab-item" data-tab="history"><span data-icon="history"></span><small>Histórico</small></button>
+      <button class="tab-item" data-tab="analysis"><span data-icon="chart"></span><small>Análises</small></button>
+      <button class="tab-item" data-tab="settings"><span data-icon="settings"></span><small>Ajustes</small></button>
+    </nav>
+  </div>
+
+  <div id="backdrop" class="backdrop" aria-hidden="true"><section class="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle"><div class="grabber"></div><div class="sheet-header"><h2 id="sheetTitle">Novo registro</h2></div><form id="form"></form></section></div>
+  <input type="file" id="importFile" accept="application/json,.json" hidden>
+  <input type="file" id="svgImportFile" accept="image/svg+xml,.svg" hidden>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  
+<script>
+window.REGISTRO_SHELL_RELEASE='1.2.0-beta.51';
+setTimeout(function(){
+  if(window.__RM_BOOT_STARTED)return;
+  var h=document.getElementById('rmBootHeadline');
+  var d=document.getElementById('rmBootDetail');
+  var a=document.getElementById('rmBootActions');
+  var f=document.getElementById('rmBootFallback');
+  document.body.classList.add('rm-boot-failed');
+  if(h)h.textContent='O inicializador não carregou';
+  if(d)d.textContent='A página abriu, mas o arquivo de inicialização não respondeu.';
+  if(a)a.hidden=false;
+  if(f)f.style.display='block';
+  var retry=document.getElementById('rmBootRetry');
+  var recover=document.getElementById('rmBootRecover');
+  var safe=document.getElementById('rmBootSafe');
+  if(retry)retry.onclick=function(){location.replace('./launch.html?fallback='+Date.now())};
+  if(recover)recover.onclick=function(){location.href='./recover.html?fallback='+Date.now()};
+  if(safe)safe.onclick=function(){location.href='./safe.html?fallback='+Date.now()};
+},8000);
+</script>
+
+<script src="./boot.js?v=1.2.0-beta.51" defer></script>
+</body>
+</html>

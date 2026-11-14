@@ -16,7 +16,10 @@
 
 <style id="rmBootCriticalStyle">
   html,body{margin:0;min-height:100%;background:#f5f5f7}
-  body.rm-booting{overflow:hidden}
+  body.rm-booting{overflow:auto}
+  /* Carregamento sem sobreposição; erro abre diagnóstico automaticamente. */
+  body.rm-booting:not(.rm-boot-failed) #rmBoot{opacity:0!important;visibility:hidden!important;pointer-events:none!important}
+  body.rm-boot-failed #rmBoot{opacity:1!important;visibility:visible!important;pointer-events:auto!important}
   #rmBoot{position:fixed;inset:0;z-index:2147483000;display:grid;place-items:center;padding:22px;background:#f5f5f7;color:#111114;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",sans-serif;box-sizing:border-box;transition:opacity .22s ease,visibility .22s ease}
   #rmBoot.rm-boot-hide{opacity:0;visibility:hidden;pointer-events:none}
   #rmBootActions[hidden],#rmBootDiagnostics[hidden]{display:none!important}
@@ -194,6 +197,7 @@ setTimeout(function(){
   var d=document.getElementById('rmBootDetail');
   var a=document.getElementById('rmBootActions');
   var f=document.getElementById('rmBootFallback');
+  document.body.classList.add('rm-boot-failed');
   if(h)h.textContent='O inicializador não carregou';
   if(d)d.textContent='A página abriu, mas o arquivo de inicialização não respondeu.';
   if(a)a.hidden=false;

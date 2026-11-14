@@ -403,7 +403,6 @@
     setProgress(100);
     setMessage('Tudo pronto', `Registro ${RELEASE} iniciado em ${nowMs()} ms`);
     log('ok', 'Aplicativo pronto para uso', `${nowMs()} ms`);
-    await sleep(100);
     document.body.classList.remove('rm-booting', 'rm-boot-failed');
     document.body.classList.add('rm-boot-complete');
     if (boot) {

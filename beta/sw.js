@@ -1,5 +1,5 @@
 
-const CACHE = 'registro-beta-offline-20261113224520';
+const CACHE = 'registro-beta-offline-20261113-fastboot01';
 const ASSETS = ["./app.js", "./appearance-editor.js", "./atualizar.html", "./beta-patches.js", "./beta-tools.js", "./boot.js", "./dev-editor.html", "./diagnostico.html", "./environment.json", "./icon-beta.jpeg", "./icon-editor.html", "./icon.svg", "./index.html", "./launch.html", "./manifest.webmanifest", "./med-package-patch.js", "./med-package-ui.js", "./medication-administration-selection.js", "./medication-emotions.js", "./medication-inventory.js", "./medication-related-notes.js", "./medication-reminders.js", "./mood-bar-v2.js", "./mood-lab-review.html", "./mood-lab.html", "./official-appearance.js", "./official-approved-ui.js", "./patches.js", "./preview-escala-humor.html", "./recover.html", "./release-guard.js", "./safe.html", "./semantic-glow.js", "./sleep-wake.js", "./stable-sync.js", "./styles.css", "./sw.js", "./tabbar-editor.html", "./tabbar-lab.html", "./v04demo.js", "./v04navicons.js", "./v04tabbar.js"];
 const REQUIRED = new Set(["./app.js", "./atualizar.html", "./boot.js", "./icon-beta.jpeg", "./index.html", "./manifest.webmanifest", "./medication-administration-selection.js", "./medication-emotions.js", "./medication-related-notes.js", "./medication-reminders.js", "./official-appearance.js", "./official-approved-ui.js", "./patches.js", "./semantic-glow.js", "./sleep-wake.js", "./styles.css"]);
 const ROOT = new URL(self.registration.scope);
@@ -20,7 +20,8 @@ self.addEventListener('install', event => {
     }));
     const missing = results.filter(p => p && REQUIRED.has(p));
     if (missing.length) throw Error('Arquivos ausentes: '+missing);
-    await self.skipWaiting();
+    // Atualizações esperam o encerramento das abas antigas; evita recarga durante edição.
+    if (!self.registration.active) await self.skipWaiting();
   })());
 });
 
@@ -42,20 +43,25 @@ self.addEventListener('fetch', event => {
       !url.pathname.startsWith(ROOT.pathname)) return;
 
   const file = './' + (url.pathname.slice(ROOT.pathname.length) || 'index.html');
+  // Consulta explícita de versão deve alcançar a rede, não o cache.
+  if (url.searchParams.has('verificar')) return;
   if (!ASSETS.includes(file)) return;
 
   event.respondWith((async () => {
     const cache = await caches.open(CACHE);
     const key = new URL(file,ROOT).href;
 
+    // Abertura imediata: usar cópia completa do aplicativo já instalada.
+    const cached = await cache.match(key);
+    if (cached) return cached;
     try {
-      const response = await fetch(req,{cache:'no-store'});
+      const response = await fetch(req);
       if (response.ok) {
-        try { await cache.put(key,response.clone()); } catch (_) {}
-        return response;
+        try { await cache.put(key, response.clone()); } catch (_) {}
       }
-    } catch (_) {}
-
-    return await cache.match(key) || Response.error();
+      return response;
+    } catch (_) {
+      return Response.error();
+    }
   })());
 });
