@@ -515,7 +515,6 @@
     log('ok', 'Tela de inicialização exibida');
     if (hadControllerAtStart) log('warn', 'Aba nasceu controlada por Service Worker antigo');
 
-    await twoPaints();
     setProgress(18);
 
     currentStage = 'ambiente';

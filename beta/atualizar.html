@@ -27,10 +27,29 @@ h.style.setProperty('--base-font-weight',String(s.fontWeight||'600'));
 </script>
   <link rel="stylesheet" href="./styles.css?v=1.2.0-beta.51">
 
+<style id="rmFirstFramePalette">
+:root {
+  --accent:#7259D6!important;
+  --record-note:#0188FE!important;
+  --record-med:#00C0E7!important;
+  --record-sleep:#6155F4!important;
+  --record-buy:#FF4900!important;
+  --note:#0188FE!important;
+  --med:#00C0E7!important;
+  --sleep:#6155F4!important;
+  --buy:#FF4900!important;
+}
+html[data-theme="dark"] {
+  --accent-soft:#2D2741!important;
+  --accent-strong:#C9BFFF!important;
+}
+</style>
+
+
 <style id="rmBootCriticalStyle">
   html,body{margin:0;min-height:100%;background:var(--bg,#000)}
   body.rm-booting{overflow:auto}
-  body.rm-booting:not(.rm-boot-failed) .app-shell{clip-path:inset(0 0 100% 0);pointer-events:none}
+  body.rm-booting:not(.rm-boot-failed) .app-shell{clip-path:none;pointer-events:auto}
   /* Carregamento sem sobreposição; erro abre diagnóstico automaticamente. */
   body.rm-booting:not(.rm-boot-failed) #rmBoot{opacity:0!important;visibility:hidden!important;pointer-events:none!important}
   body.rm-boot-failed #rmBoot{opacity:1!important;visibility:visible!important;pointer-events:auto!important}
