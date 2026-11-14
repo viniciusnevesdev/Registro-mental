@@ -4,7 +4,7 @@
 
   const RELEASE = '1.2.0-beta.51';
   const STARTED = performance.now();
-  const scopeToken = '/Registro-mental-v1/beta/';
+  const scopeToken = '/Registro-mental/beta/';
   const DIAG_KEY = 'registro-beta-last-diagnostic-v1';
   const hadControllerAtStart = Boolean(navigator.serviceWorker?.controller);
   const bootNonce = Date.now();

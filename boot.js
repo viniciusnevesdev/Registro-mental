@@ -4,7 +4,7 @@
 
   const RELEASE = '1.2.6';
   const STARTED = performance.now();
-  const scopeToken = '/Registro-mental-v1/';
+  const scopeToken = '/Registro-mental/';
   const DIAG_KEY = 'registro-last-diagnostic-v1';
   const hadControllerAtStart = Boolean(navigator.serviceWorker?.controller);
   const bootNonce = Date.now();

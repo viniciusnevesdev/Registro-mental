@@ -41,7 +41,7 @@
     let workers=0,cachesRemoved=0;
     if('serviceWorker' in navigator){
       const regs=await navigator.serviceWorker.getRegistrations();
-      const targets=regs.filter(r=>String(r.scope||'').includes('/Registro-mental-v1/beta/'));
+      const targets=regs.filter(r=>String(r.scope||'').includes('/Registro-mental/beta/'));
       const results=await Promise.allSettled(targets.map(r=>r.unregister()));
       workers=results.filter(r=>r.status==='fulfilled'&&r.value).length;
     }

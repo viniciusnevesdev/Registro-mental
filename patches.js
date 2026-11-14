@@ -93,7 +93,7 @@
         if ('serviceWorker' in navigator) {
           const regs = await navigator.serviceWorker.getRegistrations();
           await Promise.allSettled(regs
-            .filter(reg => String(reg.scope || '').includes('/Registro-mental-v1/'))
+            .filter(reg => String(reg.scope || '').includes('/Registro-mental/'))
             .map(reg => reg.unregister()));
         }
         if ('caches' in window) {
