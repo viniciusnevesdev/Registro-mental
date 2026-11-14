@@ -55,7 +55,8 @@ jobs:
           assert official_manifest['id'] == official_manifest['scope'] == './'
           assert beta_manifest['id'] == beta_manifest['scope'] == './'
           assert official_release in official_manifest['start_url']
-          assert beta_release in beta_manifest['start_url']
+          # A Beta agora abre diretamente, sem tela intermediária de atualização.
+          assert beta_manifest['start_url'] in ('./', f'./atualizar.html?v={beta_release}')
 
           official_boot = Path('boot.js').read_text(encoding='utf-8')
           beta_boot = Path('beta/boot.js').read_text(encoding='utf-8')
