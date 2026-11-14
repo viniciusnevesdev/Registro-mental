@@ -100,7 +100,7 @@ jobs:
           if (/new MutationObserver\([\s\S]{0,220}paintRelease\(\)/.test(mood)) {
             throw new Error('mood-bar-v2.js: ciclo de MutationObserver voltou a ser possível.');
           }
-          if (!mood.includes('if (stamp.textContent !== css)')) throw new Error('mood-bar-v2.js: pintura de release não é idempotente.');
+          if (!mood.includes("if (document.getElementById('rm-mood-v2-style'))")) throw new Error('mood-bar-v2.js: proteção contra instalação duplicada do estilo ausente.');
           if (/id=["']accentControl["']/.test(fs.readFileSync('index.html', 'utf8'))) {
             throw new Error('index.html: seletor antigo de cor principal voltou à interface.');
           }
